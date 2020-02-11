@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px;
+  border: 1px solid blue;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.info {
+  margin: 10px 0;
+}
+
+.day-loc {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.date {
+  font-size: 20px;
+}
+
+.time {
+  margin-bottom: 10px;
+  border: 1px solid red;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+.main-time {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid green;
+  border-radius: 10px;
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
+
+.time-next {
+  font-size: 32px;
+}
+
+.city {
+  font-size: 24px;
+}
