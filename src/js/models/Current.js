@@ -41,4 +41,22 @@ export default class Current {
       console.log(`something error: ${err}`);
     }
   }
+
+  getDate() {
+    const currentDate = new Date();
+    this.day = currentDate.getDate();
+    this.month = currentDate.getMonth();
+    this.year = currentDate.getFullYear();
+  }
+
+  async getTimePrayer() {
+    try {
+      const res = await axios.get(
+        `http://api.aladhan.com/v1/calendar?latitude=${this.coord[0]}&longitude=${this.coord[1]}&method=2&month=${this.month}&year=${this.year}`
+      );
+      this.timePrayer = res.data.data;
+    } catch (err) {
+      console.log(`something error: ${err}`);
+    }
+  }
 }
