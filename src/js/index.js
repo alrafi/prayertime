@@ -12,14 +12,18 @@ const controlCurrent = async () => {
 
   state.current.getDate();
   // console.log(state.current.year);
+
+  // show current day
+  currentView.showTodayName(state.current.day);
+
   // show current date to UI
   currentView.showTodayDate(
-    state.current.day,
+    state.current.date,
     state.current.month - 1,
     state.current.year
   );
 
-  const today = state.current.day - 1;
+  const today = state.current.date - 1;
 
   await state.current.getTimePrayer();
 
