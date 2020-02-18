@@ -1,27 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,700&display=swap');
+
 * {
   margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #d4d7dd;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 .container {
+  background-color: #eae9e9;
   display: flex;
   flex-direction: column;
   margin: 10px 20px;
-  border: 1px solid blue;
+  padding: 10px;
+  border-radius: 15px;
 }
 
 .title {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url('../img/right-bg.png');
+  background-size: 100% 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.title h1 {
+  align-self: center;
 }
 
 .info {
   margin: 10px 0;
 }
 
-.day-loc {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+.info p {
+  margin-bottom: 5px;
+}
+
+.city {
+  font-size: 24px;
 }
 
 .date {
@@ -29,9 +54,19 @@
 }
 
 .time {
+  background: #1f4037; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #99f2c8,
+    #1f4037
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #99f2c8,
+    #1f4037
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   margin-bottom: 10px;
-  border: 1px solid red;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 10px 10px;
 }
 
@@ -40,19 +75,34 @@
   justify-content: space-between;
 }
 
+.items {
+  background-color: #f6f6f6;
+  border-radius: 20px;
+}
+
 .item {
   display: flex;
   justify-content: space-between;
-  border: 1px solid green;
-  border-radius: 10px;
+  border-radius: 50px;
   padding: 10px 10px;
+  margin: 0 5px;
   margin-bottom: 5px;
+}
+
+div.charlie {
+  background: #1f4037; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #99f2c8,
+    #1f4037
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #99f2c8,
+    #1f4037
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .time-next {
   font-size: 32px;
-}
-
-.city {
-  font-size: 24px;
 }
