@@ -53,7 +53,7 @@ export default class Current {
   async getTimePrayer() {
     try {
       const res = await axios.get(
-        `http://api.aladhan.com/v1/calendar?latitude=${this.coord[0]}&longitude=${this.coord[1]}&method=2&month=${this.month}&year=${this.year}`
+        `https://api.aladhan.com/v1/calendar?latitude=${this.coord[0]}&longitude=${this.coord[1]}&method=2&month=${this.month}&year=${this.year}`
       );
       this.timePrayer = res.data.data;
     } catch (err) {
