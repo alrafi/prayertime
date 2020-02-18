@@ -44,7 +44,8 @@ export default class Current {
 
   getDate() {
     const currentDate = new Date();
-    this.day = currentDate.getDate();
+    this.date = currentDate.getDate();
+    this.day = currentDate.getDay();
     this.month = currentDate.getMonth() + 1;
     this.year = currentDate.getFullYear();
   }
