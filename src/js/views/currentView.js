@@ -13,6 +13,20 @@ export const showTimePrayer = timePrayer => {
   console.log(timePrayer);
 };
 
+export const showTodayName = day => {
+  const dayElement = document.querySelector('.day');
+  const dayName = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ];
+  dayElement.innerHTML = `${dayName[day]}`;
+};
+
 export const showTodayDate = (day, month, year) => {
   const dateElement = document.querySelector('.date');
 
