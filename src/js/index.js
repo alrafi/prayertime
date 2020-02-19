@@ -21,6 +21,7 @@ const controlCurrent = async () => {
   );
 
   const today = state.current.date - 1;
+  const tomorrow = state.current.date;
 
   // call api from getTimePrayer method
   await state.current.getTimePrayer();
@@ -33,7 +34,10 @@ const controlCurrent = async () => {
     valueTimePrayer,
     nextPrayer,
     prayerName
-  ] = state.current.getNextPrayerTime(state.current.timePrayer[today]);
+  ] = state.current.getNextPrayerTime(
+    state.current.timePrayer[today],
+    state.current.timePrayer[tomorrow]
+  );
 
   // update next prayer to UI
   currentView.showNextPrayer(valueTimePrayer);
