@@ -97,29 +97,44 @@ export default class Current {
   }
 
   // get next prayer time
-  getNextPrayerTime(timePrayer) {
+  getNextPrayerTime(timePrayer, tomorrow) {
     const dataTimePrayer = timePrayer.timings;
     const onlyTimePrayer = this.getOnlyPrayerTime(dataTimePrayer);
     const valueTimePrayer = this.getValuePrayerTime(onlyTimePrayer);
-    // console.log(valueTimePrayer);
     const prayerName = Object.keys(onlyTimePrayer);
-    // console.log(prayerName);
 
-    let foundNext = false;
-    let i = 0;
-    let nextPrayer;
-    while (!foundNext) {
-      const next = new Date(
-        `${this.monthName} ${this.date}, ${this.year} ${valueTimePrayer[i]}:00`
+    const tomorrowTimePrayer = tomorrow.timings;
+
+    // make on other function
+    const timeIsha = new Date(
+      `${this.monthName} ${this.date}, ${this.year} ${valueTimePrayer[4]}:00`
+    ).getTime();
+
+    if (this.time > timeIsha) {
+      const fajr = tomorrowTimePrayer['Fajr'].substring(0, 5);
+      const nextFajr = new Date(
+        `${this.monthName} ${this.date + 1}, ${this.year} ${fajr}:00`
       ).getTime();
 
-      if (this.time < next) {
-        foundNext = true;
-        nextPrayer = next;
-      } else {
-        i++;
+      return [fajr, nextFajr, prayerName[0]];
+    } else {
+      let foundNext = false;
+      let i = 0;
+      let nextPrayer;
+      while (!foundNext) {
+        const next = new Date(
+          `${this.monthName} ${this.date}, ${this.year} ${valueTimePrayer[i]}:00`
+        ).getTime();
+
+        if (this.time < next) {
+          foundNext = true;
+          nextPrayer = next;
+        } else {
+          i++;
+        }
       }
+
+      return [valueTimePrayer[i], nextPrayer, prayerName[i]];
     }
-    return [valueTimePrayer[i], nextPrayer, prayerName[i]];
   }
 }
