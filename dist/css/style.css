@@ -53,7 +53,7 @@ body {
   font-size: 20px;
 }
 
-.time {
+.info-box {
   background: #1f4037; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -78,6 +78,7 @@ body {
 .items {
   background-color: #f6f6f6;
   border-radius: 20px;
+  margin-bottom: 10px;
 }
 
 .item {
@@ -105,4 +106,49 @@ div.charlie {
 
 .time-next {
   font-size: 32px;
+}
+
+/* .info-box blockquote {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.info-box cite {
+  text-align: right;
+} */
+
+.quotes {
+  display: flex;
+  flex-direction: column;
+}
+
+.quotes blockquote {
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+.quotes cite {
+  align-self: flex-end;
+}
+
+.info-title {
+  padding: 0 15px;
+  margin: 5px 0;
+}
+
+footer {
+  display: flex;
+  margin: 10px 0;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer p {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+footer a {
+  font-size: 10px;
+  text-decoration: none;
 }
