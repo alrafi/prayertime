@@ -10,7 +10,6 @@ export const showTimePrayer = timePrayer => {
   asr.innerHTML = timePrayer.timings['Asr'];
   maghrib.innerHTML = timePrayer.timings['Maghrib'];
   isha.innerHTML = timePrayer.timings['Isha'];
-  console.log(timePrayer);
 };
 
 export const showTodayName = day => {
@@ -46,4 +45,28 @@ export const showTodayDate = (day, month, year) => {
   ];
 
   dateElement.innerHTML = `${monthName[month]} ${day}th, ${year}`;
+};
+
+export const showNextPrayer = nextPrayer => {
+  const nextPrayerElement = document.querySelector('.time-next');
+
+  nextPrayerElement.innerHTML = nextPrayer;
+};
+
+export const showCountdown = nextPrayer => {
+  const countdownElement = document.querySelector('.countdown');
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = nextPrayer - now;
+
+    // const hh = ;
+    const hh = ('0' + Math.floor(distance / (1000 * 3600))).slice(-2);
+    const mm = (
+      '0' + Math.floor((distance % (1000 * 3600)) / (1000 * 60))
+    ).slice(-2);
+    const ss = ('0' + Math.floor((distance % (1000 * 60)) / 1000)).slice(-2);
+
+    countdownElement.innerHTML = `${hh}:${mm}:${ss}`;
+  });
 };
