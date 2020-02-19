@@ -53,7 +53,7 @@ export const showNextPrayer = nextPrayer => {
   nextPrayerElement.innerHTML = nextPrayer;
 };
 
-export const showCountdown = nextPrayer => {
+export const showCountdown = (nextPrayer, prayerName) => {
   const countdownElement = document.querySelector('.countdown');
 
   setInterval(() => {
@@ -67,6 +67,6 @@ export const showCountdown = nextPrayer => {
     ).slice(-2);
     const ss = ('0' + Math.floor((distance % (1000 * 60)) / 1000)).slice(-2);
 
-    countdownElement.innerHTML = `${hh}:${mm}:${ss}`;
+    countdownElement.innerHTML = `${hh}:${mm}:${ss} left until ${prayerName}`;
   });
 };
