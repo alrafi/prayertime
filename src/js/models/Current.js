@@ -102,6 +102,8 @@ export default class Current {
     const onlyTimePrayer = this.getOnlyPrayerTime(dataTimePrayer);
     const valueTimePrayer = this.getValuePrayerTime(onlyTimePrayer);
     // console.log(valueTimePrayer);
+    const prayerName = Object.keys(onlyTimePrayer);
+    // console.log(prayerName);
 
     let foundNext = false;
     let i = 0;
@@ -118,6 +120,6 @@ export default class Current {
         i++;
       }
     }
-    return [valueTimePrayer[i], nextPrayer];
+    return [valueTimePrayer[i], nextPrayer, prayerName[i]];
   }
 }

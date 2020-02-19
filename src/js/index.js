@@ -29,15 +29,17 @@ const controlCurrent = async () => {
   currentView.showTimePrayer(state.current.timePrayer[today]);
 
   // next prayer
-  const [valueTimePrayer, nextPrayer] = state.current.getNextPrayerTime(
-    state.current.timePrayer[today]
-  );
+  const [
+    valueTimePrayer,
+    nextPrayer,
+    prayerName
+  ] = state.current.getNextPrayerTime(state.current.timePrayer[today]);
 
   // update next prayer to UI
   currentView.showNextPrayer(valueTimePrayer);
 
   // show countdown to UI
-  currentView.showCountdown(nextPrayer);
+  currentView.showCountdown(nextPrayer, prayerName);
 };
 
 controlCurrent();
