@@ -8,10 +8,7 @@ const controlCurrent = async () => {
 
   await state.current.getCoord();
 
-  // await state.current.getCityName();
-
   state.current.getDate();
-  // console.log(state.current.year);
 
   // show current day
   currentView.showTodayName(state.current.day);
@@ -25,13 +22,22 @@ const controlCurrent = async () => {
 
   const today = state.current.date - 1;
 
+  // call api from getTimePrayer method
   await state.current.getTimePrayer();
 
-  console.log(state.current.coord);
-
   // show the time prayer to UI
-  // console.log(state.current.timePrayer);
   currentView.showTimePrayer(state.current.timePrayer[today]);
+
+  // next prayer
+  const [valueTimePrayer, nextPrayer] = state.current.getNextPrayerTime(
+    state.current.timePrayer[today]
+  );
+
+  // update next prayer to UI
+  currentView.showNextPrayer(valueTimePrayer);
+
+  // show countdown to UI
+  currentView.showCountdown(nextPrayer);
 };
 
 controlCurrent();
