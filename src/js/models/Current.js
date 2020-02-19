@@ -44,10 +44,26 @@ export default class Current {
 
   getDate() {
     const currentDate = new Date();
-    this.date = currentDate.getDate();
-    this.day = currentDate.getDay();
-    this.month = currentDate.getMonth() + 1;
-    this.year = currentDate.getFullYear();
+    const nameOfMonth = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'June',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Des'
+    ];
+    this.time = currentDate.getTime(); // time in milisecond based on Jan 1, 1970
+    this.date = currentDate.getDate(); // 1-31
+    this.day = currentDate.getDay(); // 0-6
+    this.month = currentDate.getMonth() + 1; // 0-11 but change to 1-12
+    this.year = currentDate.getFullYear(); // 2020, 2021, so on
+    this.monthName = nameOfMonth[this.month - 1]; // 3 char of month name
   }
 
   async getTimePrayer() {
@@ -59,5 +75,49 @@ export default class Current {
     } catch (err) {
       console.log(`something error: ${err}`);
     }
+  }
+
+  getOnlyPrayerTime(raw) {
+    const allowed = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+
+    const filtered = Object.keys(raw)
+      .filter(key => allowed.includes(key))
+      .reduce((obj, key) => {
+        obj[key] = raw[key];
+        return obj;
+      }, {});
+
+    return filtered;
+  }
+
+  getValuePrayerTime(dataTimePrayer) {
+    const values = Object.values(dataTimePrayer);
+    const onlyValues = values.map(value => value.substring(0, 5));
+    return onlyValues;
+  }
+
+  // get next prayer time
+  getNextPrayerTime(timePrayer) {
+    const dataTimePrayer = timePrayer.timings;
+    const onlyTimePrayer = this.getOnlyPrayerTime(dataTimePrayer);
+    const valueTimePrayer = this.getValuePrayerTime(onlyTimePrayer);
+    // console.log(valueTimePrayer);
+
+    let foundNext = false;
+    let i = 0;
+    let nextPrayer;
+    while (!foundNext) {
+      const next = new Date(
+        `${this.monthName} ${this.date}, ${this.year} ${valueTimePrayer[i]}:00`
+      ).getTime();
+
+      if (this.time < next) {
+        foundNext = true;
+        nextPrayer = next;
+      } else {
+        i++;
+      }
+    }
+    return [valueTimePrayer[i], nextPrayer];
   }
 }
