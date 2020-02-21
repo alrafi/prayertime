@@ -72,9 +72,18 @@ body {
   padding: 10px 10px;
 }
 
+.image {
+  display: flex;
+  flex-direction: column;
+}
+
 .image p {
   font-size: 18px;
   text-align: center;
+}
+
+.image img {
+  align-self: center;
 }
 
 .items {
