@@ -33,7 +33,8 @@ const controlCurrent = async () => {
   const [
     valueTimePrayer,
     nextPrayer,
-    prayerName
+    prayerName,
+    indexNextPrayer
   ] = state.current.getNextPrayerTime(
     state.current.timePrayer[today],
     state.current.timePrayer[tomorrow]
@@ -44,6 +45,9 @@ const controlCurrent = async () => {
 
   // show countdown to UI
   currentView.showCountdown(nextPrayer, prayerName);
+
+  // highlight next prayer
+  currentView.highlightNextPrayer(indexNextPrayer);
 };
 
 controlCurrent();
