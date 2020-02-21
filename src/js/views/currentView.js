@@ -75,3 +75,23 @@ export const highlightNextPrayer = indexNextPrayer => {
   const items = document.querySelectorAll('.item');
   items[indexNextPrayer].classList.add('highlight');
 };
+
+export const showCityName = (city, country) => {
+  const cityElement = document.querySelector('.city');
+  cityElement.innerHTML = `${city}, ${country}`;
+  // console.log(city, country);
+};
+
+export const showWeather = (temp, icon, description) => {
+  const iconElement = document.querySelector('.image img');
+  const tempElement = document.querySelector('.image p');
+
+  iconElement.setAttribute(
+    'src',
+    `http://openweathermap.org/img/wn/${icon}.png`
+  );
+  iconElement.setAttribute('title', `${description}`);
+  iconElement.setAttribute('alt', `${description}`);
+  tempElement.innerHTML = `${temp} &#176C`;
+  // console.log(tempElement);
+};
