@@ -54,6 +54,8 @@ body {
 }
 
 .info-box {
+  display: flex;
+  justify-content: space-between;
   background: #1f4037; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -70,9 +72,9 @@ body {
   padding: 10px 10px;
 }
 
-.main-time {
-  display: flex;
-  justify-content: space-between;
+.image p {
+  font-size: 18px;
+  text-align: center;
 }
 
 .items {
