@@ -70,3 +70,8 @@ export const showCountdown = (nextPrayer, prayerName) => {
     countdownElement.innerHTML = `${hh}:${mm}:${ss} left until ${prayerName}`;
   });
 };
+
+export const highlightNextPrayer = indexNextPrayer => {
+  const items = document.querySelectorAll('.item');
+  items[indexNextPrayer].classList.add('highlight');
+};
