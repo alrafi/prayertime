@@ -30,11 +30,13 @@ export default class Current {
     }
   }
 
-  async getCityName() {
+  async getWeather() {
     try {
       const res = await axios.get(
         `http://api.openweathermap.org/data/2.5/weather?lat=${this.coord[0]}&lon=${this.coord[1]}&units=metric&appid=f3bfa42f5eb3ca462fa3a4e43d1366ff`
       );
+      this.icon = res.data.weather[0].icon;
+      this.description = res.data.weather[0].description;
       this.temperature = res.data.main.temp;
       this.city = res.data.name;
       this.country = res.data.sys.country;
