@@ -90,7 +90,7 @@ body {
   margin-bottom: 5px;
 }
 
-div.charlie {
+div.highlight {
   background: #1f4037; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
