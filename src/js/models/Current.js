@@ -115,8 +115,9 @@ export default class Current {
       const nextFajr = new Date(
         `${this.monthName} ${this.date + 1}, ${this.year} ${fajr}:00`
       ).getTime();
+      const i = 0;
 
-      return [fajr, nextFajr, prayerName[0]];
+      return [fajr, nextFajr, prayerName[i], i];
     } else {
       let foundNext = false;
       let i = 0;
@@ -134,7 +135,7 @@ export default class Current {
         }
       }
 
-      return [valueTimePrayer[i], nextPrayer, prayerName[i]];
+      return [valueTimePrayer[i], nextPrayer, prayerName[i], i];
     }
   }
 }
