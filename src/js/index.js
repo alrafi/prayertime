@@ -26,6 +26,9 @@ const controlCurrent = async () => {
   // call api from getTimePrayer method
   await state.current.getTimePrayer();
 
+  // call api from getWeather method
+  await state.current.getWeather();
+
   // show the time prayer to UI
   currentView.showTimePrayer(state.current.timePrayer[today]);
 
@@ -48,6 +51,16 @@ const controlCurrent = async () => {
 
   // highlight next prayer
   currentView.highlightNextPrayer(indexNextPrayer);
+
+  // show city name and country to UI
+  currentView.showCityName(state.current.city, state.current.country);
+
+  // show temperature
+  currentView.showWeather(
+    state.current.temperature,
+    state.current.icon,
+    state.current.description
+  );
 };
 
 controlCurrent();
