@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css"
+      rel="stylesheet"
+    />
     <title>Prayer Time Alrafi</title>
   </head>
   <body>
@@ -11,43 +15,57 @@
       <div class="title">
         <h1>Al-Rafi</h1>
         <div class="info">
-          <p class="city"></p>
-          <p class="day">SATURDAY</p>
-          <p class="date">January 20th, 2020</p>
+          <p class="city">Location</p>
+          <p class="day">Day</p>
+          <p class="date">Month Date, Year</p>
         </div>
       </div>
-      <div class="info-box">
-        <div class="main-time">
-          <p>Next Prayer</p>
-          <p class="time-next">--:--</p>
-          <p class="countdown"></p>
+      <form class="form-city">
+        <input
+          type="text"
+          class="input-city"
+          placeholder="Input another city..."
+        />
+        <button class="search-button">
+          <i class="icon ion-ios-search"></i>
+        </button>
+      </form>
+      <div class="content">
+        <div class="info-box">
+          <div class="main-time">
+            <p>Next Prayer</p>
+            <p class="time-next">--:--</p>
+            <p class="countdown"></p>
+          </div>
+          <div class="image">
+            <img src="http://openweathermap.org/img/wn/10d.png" alt="" />
+            <p></p>
+          </div>
         </div>
-        <div class="image">
-          <img src="http://openweathermap.org/img/wn/10d.png" alt="" />
-          <p></p>
-        </div>
-      </div>
-      <p class="info-title">PRAYER TIME</p>
-      <div class="items">
-        <div class="item">
-          <p>Fajr</p>
-          <p class="fajr">--:--</p>
-        </div>
-        <div class="item">
-          <p>Dhuhr</p>
-          <p class="dhuhr">--:--</p>
-        </div>
-        <div class="item">
-          <p>Asr</p>
-          <p class="asr">--:--</p>
-        </div>
-        <div class="item">
-          <p>Maghrib</p>
-          <p class="maghrib">--:--</p>
-        </div>
-        <div class="item">
-          <p>Isha</p>
-          <p class="isha">--:--</p>
+        <div class="prayer-time">
+          <p class="info-title">PRAYER TIME</p>
+          <div class="items">
+            <div class="item">
+              <p>Fajr</p>
+              <p class="fajr">--:--</p>
+            </div>
+            <div class="item">
+              <p>Dhuhr</p>
+              <p class="dhuhr">--:--</p>
+            </div>
+            <div class="item">
+              <p>Asr</p>
+              <p class="asr">--:--</p>
+            </div>
+            <div class="item">
+              <p>Maghrib</p>
+              <p class="maghrib">--:--</p>
+            </div>
+            <div class="item">
+              <p>Isha</p>
+              <p class="isha">--:--</p>
+            </div>
+          </div>
         </div>
       </div>
       <p class="info-title">QURAN OF THE DAY</p>
