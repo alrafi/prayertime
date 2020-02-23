@@ -1,4 +1,5 @@
 import Current from './models/Current';
+import Search from './models/Search';
 import * as currentView from './views/currentView';
 
 const state = {};
@@ -64,3 +65,24 @@ const controlCurrent = async () => {
 };
 
 controlCurrent();
+
+const form = document.querySelector('.form-city');
+const search = document.querySelector('.input-city');
+
+const controlSearch = async () => {
+  state.search = new Search(search.value);
+
+  await state.search.getResult();
+  console.log(state.search.timePrayer);
+
+  await state.search.getCityWeather();
+  console.log(state.search.city);
+  console.log(state.search.temperature);
+};
+
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  // console.log(search.value);
+  controlSearch();
+  search.value = '';
+});
