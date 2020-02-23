@@ -91,6 +91,7 @@ body {
   background-color: #f6f6f6;
   border-radius: 20px;
   margin-bottom: 10px;
+  padding: 10px 0;
 }
 
 .item {
@@ -119,15 +120,6 @@ div.highlight {
 .time-next {
   font-size: 32px;
 }
-
-/* .info-box blockquote {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.info-box cite {
-  text-align: right;
-} */
 
 .quotes {
   display: flex;
@@ -164,4 +156,59 @@ footer p {
 footer a {
   font-size: 10px;
   text-decoration: none;
+}
+
+.form-city {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  /* width: 100%; */
+  padding: 5px 15px;
+  border-radius: 50px;
+  background-color: #eae9e9;
+  border: solid 2px #d4d7dd;
+}
+
+.input-city {
+  font-family: inherit;
+  /* font-size: 1.5rem; */
+  width: 100%;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  border-radius: 100px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  /* margin-left: 5px; */
+}
+
+.input-city:focus {
+  border: none;
+  outline: none;
+}
+
+.search-button {
+  z-index: 9999;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.search-button:focus {
+  border: none;
+  outline: none;
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) {
+  .container {
+    width: 420px;
+    margin: 20px auto;
+  }
 }
