@@ -44,7 +44,7 @@ export const showTodayDate = (day, month, year) => {
     'December'
   ];
 
-  dateElement.innerHTML = `${monthName[month]} ${day}th, ${year}`;
+  dateElement.innerHTML = `${monthName[month]} ${day}, ${year}`;
 };
 
 export const showNextPrayer = nextPrayer => {
