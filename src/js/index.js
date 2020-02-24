@@ -7,22 +7,15 @@ const state = {};
 const controlCurrent = async () => {
   state.current = new Current();
 
-  await state.current.getCoord();
-
   state.current.getDate();
+  const attrDate = {
+    day: state.current.day,
+    month: state.current.month,
+    year: state.current.year
+  };
 
-  // show current day
-  currentView.showTodayName(state.current.day);
-
-  // show current date to UI
-  currentView.showTodayDate(
-    state.current.date,
-    state.current.month - 1,
-    state.current.year
-  );
-
-  const today = state.current.date - 1;
-  const tomorrow = state.current.date;
+  // get coodinate
+  await state.current.getCoord();
 
   // call api from getTimePrayer method
   await state.current.getTimePrayer();
@@ -30,8 +23,8 @@ const controlCurrent = async () => {
   // call api from getWeather method
   await state.current.getWeather();
 
-  // show the time prayer to UI
-  currentView.showTimePrayer(state.current.timePrayer[today]);
+  const today = state.current.date - 1;
+  const tomorrow = state.current.date;
 
   // next prayer
   const [
@@ -44,45 +37,110 @@ const controlCurrent = async () => {
     state.current.timePrayer[tomorrow]
   );
 
-  // update next prayer to UI
-  currentView.showNextPrayer(valueTimePrayer);
+  const attrNextPrayer = {
+    today,
+    tomorrow,
+    valueTimePrayer,
+    nextPrayer,
+    prayerName,
+    indexNextPrayer
+  };
+  // console.log(attr);
+  // console.log(attr);
 
-  // show countdown to UI
-  currentView.showCountdown(nextPrayer, prayerName);
-
-  // highlight next prayer
-  currentView.highlightNextPrayer(indexNextPrayer);
-
-  // show city name and country to UI
-  currentView.showCityName(state.current.city, state.current.country);
-
-  // show temperature
-  currentView.showWeather(
-    state.current.temperature,
-    state.current.icon,
-    state.current.description
-  );
+  updateUI(state.current, attrNextPrayer, attrDate);
 };
-
-controlCurrent();
 
 const form = document.querySelector('.form-city');
 const search = document.querySelector('.input-city');
 
 const controlSearch = async () => {
+  if (!search.value) return;
   state.search = new Search(search.value);
+  state.currentSearch = new Current();
 
-  await state.search.getResult();
-  console.log(state.search.timePrayer);
+  state.currentSearch.getDate();
 
-  await state.search.getCityWeather();
-  console.log(state.search.city);
-  console.log(state.search.temperature);
+  try {
+    await state.search.getCityWeather();
+  } catch (err) {
+    console.log(err);
+  }
+
+  if (!state.search.temperature) {
+    alert('City is not found');
+    return;
+  }
+
+  await state.search.getResult(state.search.country);
+
+  const today = state.currentSearch.date - 1;
+  const tomorrow = state.currentSearch.date;
+
+  // next prayer
+  const [
+    valueTimePrayer,
+    nextPrayer,
+    prayerName,
+    indexNextPrayer
+  ] = state.currentSearch.getNextPrayerTime(
+    state.search.timePrayer[today],
+    state.search.timePrayer[tomorrow]
+  );
+
+  const attr = {
+    today,
+    tomorrow,
+    valueTimePrayer,
+    nextPrayer,
+    prayerName,
+    indexNextPrayer
+  };
+
+  // console.log(attr);
+  updateUI(state.search, attr, state.currentSearch);
+};
+
+const updateUI = (current, attr, attrDate) => {
+  // show current day
+  currentView.showTodayName(attrDate.day);
+
+  // show current date to UI
+  currentView.showTodayDate(attr.today + 1, attrDate.month - 1, attrDate.year);
+
+  // show the time prayer to UI
+  currentView.showTimePrayer(current.timePrayer[attr.today]);
+
+  // update next prayer to UI
+  currentView.showNextPrayer(attr.valueTimePrayer);
+
+  // show countdown to UI
+  currentView.showCountdown(attr.nextPrayer, attr.prayerName);
+
+  // highlight next prayer
+  currentView.highlightNextPrayer(attr.indexNextPrayer);
+
+  // show city name and country to UI
+  currentView.showCityName(current.city, current.country);
+
+  // show temperature
+  currentView.showWeather(
+    current.temperature,
+    current.icon,
+    current.description
+  );
 };
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  // console.log(search.value);
+  currentView.removeHighlight();
+  currentView.stopCountdown();
   controlSearch();
-  search.value = '';
+  currentView.clearSearch();
 });
+
+const init = () => {
+  controlCurrent();
+};
+
+init();
