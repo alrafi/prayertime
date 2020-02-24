@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { APIKEY } from '../config';
 
 function getCurrentLocation(options) {
   return new Promise((resolve, reject) => {
@@ -33,7 +34,7 @@ export default class Current {
   async getWeather() {
     try {
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${this.coord[0]}&lon=${this.coord[1]}&units=metric&appid=f3bfa42f5eb3ca462fa3a4e43d1366ff`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${this.coord[0]}&lon=${this.coord[1]}&units=metric&appid=${APIKEY}`
       );
       this.icon = res.data.weather[0].icon;
       this.description = res.data.weather[0].description;
@@ -67,6 +68,15 @@ export default class Current {
     this.month = currentDate.getMonth() + 1; // 0-11 but change to 1-12
     this.year = currentDate.getFullYear(); // 2020, 2021, so on
     this.monthName = nameOfMonth[this.month - 1]; // 3 char of month name
+
+    return [
+      this.time,
+      this.date,
+      this.day,
+      this.month,
+      this.year,
+      this.monthName
+    ];
   }
 
   async getTimePrayer() {
@@ -108,7 +118,7 @@ export default class Current {
 
     const tomorrowTimePrayer = tomorrow.timings;
 
-    // make on other function
+    // todo: refactor -- make on other function
     const timeIsha = new Date(
       `${this.monthName} ${this.date}, ${this.year} ${valueTimePrayer[4]}:00`
     ).getTime();
