@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css"
+      rel="stylesheet"
+    />
     <title>Prayer Time Alrafi</title>
   </head>
   <body>
@@ -11,11 +15,21 @@
       <div class="title">
         <h1>Al-Rafi</h1>
         <div class="info">
-          <p class="city"></p>
-          <p class="day">SATURDAY</p>
-          <p class="date">January 20th, 2020</p>
+          <p class="city">Location</p>
+          <p class="day">Day</p>
+          <p class="date">Month Date, Year</p>
         </div>
       </div>
+      <form class="form-city">
+        <input
+          type="text"
+          class="input-city"
+          placeholder="Input another city..."
+        />
+        <button class="search-button">
+          <i class="icon ion-ios-search"></i>
+        </button>
+      </form>
       <div class="content">
         <div class="info-box">
           <div class="main-time">
@@ -29,8 +43,8 @@
           </div>
         </div>
         <div class="prayer-time">
+          <p class="info-title">PRAYER TIME</p>
           <div class="items">
-            <p class="info-title">PRAYER TIME</p>
             <div class="item">
               <p>Fajr</p>
               <p class="fajr">--:--</p>
