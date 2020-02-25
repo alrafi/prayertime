@@ -82,24 +82,19 @@ export const removeHighlight = () => {
 };
 
 export const showCityName = (city, country) => {
-  const cityElement = document.querySelector('.city');
-  cityElement.innerHTML = `${city}, ${country}`;
+  elements.cityElement.innerHTML = `${city}, ${country}`;
 };
 
 export const showWeather = (temp, icon, description) => {
-  const iconElement = document.querySelector('.image img');
-  const tempElement = document.querySelector('.image p');
-
-  iconElement.setAttribute(
+  elements.iconElement.setAttribute(
     'src',
     `http://openweathermap.org/img/wn/${icon}.png`
   );
-  iconElement.setAttribute('title', `${description}`);
-  iconElement.setAttribute('alt', `${description}`);
-  tempElement.innerHTML = `${temp} &#176C`;
+  elements.iconElement.setAttribute('title', `${description}`);
+  elements.iconElement.setAttribute('alt', `${description}`);
+  elements.tempElement.innerHTML = `${temp} &#176C`;
 };
 
 export const clearSearch = () => {
-  const search = document.querySelector('.input-city');
-  search.value = '';
+  elements.search.value = '';
 };
