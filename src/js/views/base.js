@@ -3,5 +3,6 @@ export const elements = {
   dhuhr: document.querySelector('.dhuhr'),
   asr: document.querySelector('.asr'),
   maghrib: document.querySelector('.maghrib'),
-  isha: document.querySelector('.isha')
+  isha: document.querySelector('.isha'),
+  dayElement: document.querySelector('.day')
 };

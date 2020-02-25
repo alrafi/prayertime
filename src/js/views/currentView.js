@@ -9,7 +9,6 @@ export const showTimePrayer = timePrayer => {
 };
 
 export const showTodayName = day => {
-  const dayElement = document.querySelector('.day');
   const dayName = [
     'Sunday',
     'Monday',
