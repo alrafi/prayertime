@@ -72,7 +72,6 @@ export const stopCountdown = () => {
 };
 
 export const highlightNextPrayer = indexNextPrayer => {
-  const items = document.querySelectorAll('.item');
   items[indexNextPrayer].classList.add('highlight');
 };
 
