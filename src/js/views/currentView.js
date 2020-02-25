@@ -1,15 +1,11 @@
-export const showTimePrayer = timePrayer => {
-  const fajr = document.querySelector('.fajr');
-  const dhuhr = document.querySelector('.dhuhr');
-  const asr = document.querySelector('.asr');
-  const maghrib = document.querySelector('.maghrib');
-  const isha = document.querySelector('.isha');
+import { elements } from './base';
 
-  fajr.innerHTML = timePrayer.timings['Fajr'];
-  dhuhr.innerHTML = timePrayer.timings['Dhuhr'];
-  asr.innerHTML = timePrayer.timings['Asr'];
-  maghrib.innerHTML = timePrayer.timings['Maghrib'];
-  isha.innerHTML = timePrayer.timings['Isha'];
+export const showTimePrayer = timePrayer => {
+  elements.fajr.innerHTML = timePrayer.timings['Fajr'];
+  elements.dhuhr.innerHTML = timePrayer.timings['Dhuhr'];
+  elements.asr.innerHTML = timePrayer.timings['Asr'];
+  elements.maghrib.innerHTML = timePrayer.timings['Maghrib'];
+  elements.isha.innerHTML = timePrayer.timings['Isha'];
 };
 
 export const showTodayName = day => {
