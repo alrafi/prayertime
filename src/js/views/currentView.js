@@ -18,12 +18,10 @@ export const showTodayName = day => {
     'Friday',
     'Saturday'
   ];
-  dayElement.innerHTML = `${dayName[day]}`;
+  elements.dayElement.innerHTML = `${dayName[day]}`;
 };
 
 export const showTodayDate = (day, month, year) => {
-  const dateElement = document.querySelector('.date');
-
   const monthName = [
     'January',
     'February',
@@ -39,7 +37,7 @@ export const showTodayDate = (day, month, year) => {
     'December'
   ];
 
-  dateElement.innerHTML = `${monthName[month]} ${day}, ${year}`;
+  elements.dateElement.innerHTML = `${monthName[month]} ${day}, ${year}`;
 };
 
 export const showNextPrayer = nextPrayer => {
