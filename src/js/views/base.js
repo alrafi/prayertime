@@ -5,5 +5,6 @@ export const elements = {
   maghrib: document.querySelector('.maghrib'),
   isha: document.querySelector('.isha'),
   dayElement: document.querySelector('.day'),
-  dateElement: document.querySelector('.date')
+  dateElement: document.querySelector('.date'),
+  nextPrayerElement: document.querySelector('.time-next')
 };

@@ -41,9 +41,7 @@ export const showTodayDate = (day, month, year) => {
 };
 
 export const showNextPrayer = nextPrayer => {
-  const nextPrayerElement = document.querySelector('.time-next');
-
-  nextPrayerElement.innerHTML = nextPrayer;
+  elements.nextPrayerElement.innerHTML = nextPrayer;
 };
 
 let interval;
