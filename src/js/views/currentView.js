@@ -72,12 +72,11 @@ export const stopCountdown = () => {
 };
 
 export const highlightNextPrayer = indexNextPrayer => {
-  items[indexNextPrayer].classList.add('highlight');
+  elements.items[indexNextPrayer].classList.add('highlight');
 };
 
 export const removeHighlight = () => {
-  const items = document.querySelectorAll('.item');
-  items.forEach(item => {
+  elements.items.forEach(item => {
     item.classList.remove('highlight');
   });
 };
