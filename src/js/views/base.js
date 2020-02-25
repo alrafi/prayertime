@@ -6,5 +6,6 @@ export const elements = {
   isha: document.querySelector('.isha'),
   dayElement: document.querySelector('.day'),
   dateElement: document.querySelector('.date'),
-  nextPrayerElement: document.querySelector('.time-next')
+  nextPrayerElement: document.querySelector('.time-next'),
+  countdownElement: document.querySelector('.countdown')
 };

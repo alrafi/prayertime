@@ -47,8 +47,6 @@ export const showNextPrayer = nextPrayer => {
 let interval;
 
 export const showCountdown = (nextPrayer, prayerName) => {
-  const countdownElement = document.querySelector('.countdown');
-
   const countdown = () => {
     const now = new Date().getTime();
     const distance = nextPrayer - now;
@@ -59,7 +57,7 @@ export const showCountdown = (nextPrayer, prayerName) => {
     ).slice(-2);
     const ss = ('0' + Math.floor((distance % (1000 * 60)) / 1000)).slice(-2);
 
-    countdownElement.innerHTML = `${hh}:${mm}:${ss} left until ${prayerName}`;
+    elements.countdownElement.innerHTML = `${hh}:${mm}:${ss} left until ${prayerName}`;
 
     if (distance < 0) {
       window.location.reload();
